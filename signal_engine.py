@@ -142,7 +142,7 @@ def breakout_signal(df):
         return "DOWN"
 
     return "NONE"
-  # -------------------------
+    # -------------------------
 # BULLISH ENGULFING
 # -------------------------
 

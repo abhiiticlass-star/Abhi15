@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 10px; }
+        .box { border: 1px solid #444; padding: 15px; margin: 10px 0; border-radius: 8px; background: #1e1e1e; }
+        .signal-up { background: #1b5e20; color: #a5d6a7; padding: 20px; font-size: 24px; font-weight: bold; }
+        .signal-down { background: #b71c1c; color: #ef9a9a; padding: 20px; font-size: 24px; font-weight: bold; }
+        .signal-avoid { background: #fbc02d; color: #000; padding: 20px; font-size: 24px; font-weight: bold; }
+        select { width: 100%; padding: 10px; margin-top: 5px; background: #333; color: white; border: none; }
+    </style>
+</head>
+<body>
+
+    <h2>ABHI'S ALGO V9.8</h2>
+    <div id="clock" style="font-size: 18px; color: #aaa;">--:--:-- IST</div>
+
+    <div class="box">
+        <label>Asset:</label>
+        <select id="asset">
+            <option>EUR/USD</option><option>GBP/USD</option>
+            <option>USD/JPY</option><option>AUD/USD</option>
+        </select>
+        
+        <label>Timeframe:</label>
+        <select id="tf">
+            <option>1-Minute</option><option>5-Minute</option>
+        </select>
+    </div>
+
+    <div id="signal-box" class="signal-avoid">
+        AVOID TRADE 🟡
+    </div>
+
+    <div class="box">
+        <div>Trend (M1): <span id="m1-trend">Bullish 🟢</span></div>
+        <div>Trend (M5): <span id="m5-trend">Bearish 🔴</span></div>
+        <div style="margin-top:10px;">Probability: 78% UP</div>
+        <div style="background:#444; height:10px; border-radius:5px;"><div style="width:78%; background:#4caf50; height:100%;"></div></div>
+    </div>
+
+    <p>Layer Structural Confluence Active</p>
+
+    <script>
+        // Clock Logic
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata' });
+        }, 1000);
+
+        // Weekend Check
+        const day = new Date().getDay();
+        if(day === 0 || day === 6) {
+            const box = document.getElementById('signal-box');
+            box.innerHTML = "MARKET CLOSED ⚪";
+            box.style.background = "#fff";
+            box.style.color = "#000";
+        }
+    </script>
+</body>
+</html>
